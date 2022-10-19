@@ -1,0 +1,138 @@
+<div class="container-fluid" style="background-color:#838383;">
+  <div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color:#1F2833; color: aliceblue;">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <a class="navbar-brand js-scroll-trigger" href="/home">
+          <span class="d-none d-lg-block">
+            <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/Assets/images/profile1.jpeg"
+              height="3000px" alt="">
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav mr-auto">
+
+          <% if (title=="Home" ){ %>
+            <li class="nav-item active">
+              <% } else { %>
+            <li class="nav-item">
+              <% } %>
+                <a class="nav-link text-white" href="/home"><i class="fas fa-house-user"></i> Home </a>
+            </li>
+
+            <% if (title=="About" ) { %>
+              <li class="nav-item active">
+                <% } else { %>
+              <li class="nav-item">
+                <% } %>
+                  <a class="nav-link text-white" href="/about"><i class="fas fa-address-card"></i> About Me </a>
+              </li>
+
+              <% if (title=="Products" ) { %>
+                <li class="nav-item active">
+                  <% } else { %>
+                <li class="nav-item">
+                  <% } %>
+                    <a class="nav-link text-white" href="/products"><i class="fas fa-tasks"></i> Projects </a>
+                </li>
+
+                <% if (title=="Services" ) { %>
+                  <li class="nav-item active">
+                    <% } else { %>
+                  <li class="nav-item">
+                    <% } %>
+                      <a class="nav-link text-white" href="/services"><i class="fas fa-cogs"></i> Services </a>
+                  </li>
+
+                  <% if (title=="Contact" ) { %>
+                    <li class="nav-item active">
+                      <% } else { %>
+                    <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link text-white" href="/contact"><i class="fas fa-sms"></i> Contact </a>
+                    </li>
+
+                    <% if (title=="book-list" ) { %>
+                      <li class="nav-item active">
+                        <% } else { %>
+                      <li class="nav-item">
+                        <% } %>
+                          <a class="nav-link text-white" href="/book-list"><i class="fas fa-phone-square-alt"></i>
+                            Business Contact </a>
+                      </li>
+
+                      <% if(typeof displayName=='string' && displayName) { %>
+                        <li class="navbar-text"><i class="fas fa-user-circle"></i> Welcome, <%= displayName %>
+                        </li>
+                        <li class="nav-item"><a href="/logout" class="nav-link text-white">
+                            <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+                        <% } else { %>
+                          <li class="nav-item"><a href="/login" class="nav-link text-white">
+                              <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+                          <% } %>
+      </div>
+    </div>
+    <div class="col py-3">
+      <div class="jumbotron" style="background-color:#1F2833; color: #ffffff;">
+        <main class="container">
+          <!-- //add boostrap table code -->
+
+          <div class="row">
+            <div class="col-md-offset-3 col-md-8">
+              <h1>
+                <%=title %>
+              </h1>
+              <% if(typeof displayName=='string' && displayName) { %>
+
+                <a href="/book-list/add" class="btn btn-primary" role="button">
+                  <i class="fas fa-plus-circle"></i> Add a Contact
+                  <%}%>
+                </a>
+                <br />
+                <table class="table table-bordered table-striped" style="color:#ffffff;">
+                  <!--HEader row-->
+                  <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Contact</th>
+                    <th class="text-center">Email</th>
+                    <% if(typeof displayName=='string' && displayName) { %>
+
+                      <th class="text-center"></th>
+                      <th class="text-center"></th>
+                      <%}%>
+                  </tr>
+
+                  <!--Repetable Templet row-->
+                  <% for (let count=0; count<BookList.length; count++){%>
+                    <tr>
+                      <td class="text-centre ">
+                        <%=BookList[count].name %>
+                      </td>
+                      <td class="text-centre ">
+                        <%=BookList[count].contact %>
+                      </td>
+                      <td class="text-centre ">
+                        <%=BookList[count].email %>
+                      </td>
+                      <% if(typeof displayName=='string' && displayName) { %>
+                        <td class="text-center col-1">
+                          <a href="/book-list/edit/<%= BookList[count]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i> Edit</a>
+                        </td>
+                        <td class="text-center col-1">
+                          <a href="/book-list/delete/<%= BookList[count]._id %>" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Delete</a>
+                        </td>
+                        <%}%>
+                    </tr>
+                    <%}%>
+                </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<div class="container-fluid"  style="background-color:#838383;">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color:#1F2833; color: aliceblue;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a class="navbar-brand js-scroll-trigger" href="/home">
+                    <span class="d-none d-lg-block">
+                      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/Assets/images/profile1.jpeg" height="3000px" alt="">
+                    </span>
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                    <ul class="navbar-nav mr-auto">
+                
+                      <% if (title == "Home"){ %>
+                      <li class="nav-item active">
+                      <% } else  { %>
+                      <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link text-white" href="/home"><i class="fas fa-house-user"></i> Home </a>
+                      </li>
+                
+                      <% if (title == "About") { %>
+                      <li class="nav-item active">
+                      <% } else  { %>
+                      <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link text-white" href="/about"><i class="fas fa-address-card"></i> About Me </a>
+                      </li>
+                
+                      <% if (title == "Products") { %>
+                      <li class="nav-item active">
+                      <% } else  { %>
+                      <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link text-white" href="/products"><i class="fas fa-tasks"></i> Projects </a>
+                      </li>
+                
+                      <% if (title == "Services") { %>
+                      <li class="nav-item active">
+                      <% } else  { %>
+                      <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link text-white" href="/services"><i class="fas fa-cogs"></i> Services </a>
+                      </li>
+                
+                      <% if (title == "Contact") { %>
+                      <li class="nav-item active">
+                      <% } else  { %>
+                      <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link text-white" href="/contact"><i class="fas fa-sms"></i> Contact </a>
+                      </li>
+                
+                      <% if (title == "book-list") { %>
+                      <li class="nav-item active">
+                      <% } else  { %>
+                      <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link text-white" href="/book-list"><i class="fas fa-phone-square-alt"></i> Business Contact </a>
+                      </li>
+
+                      <% if(typeof displayName == 'string' && displayName) { %>
+                        <li class="navbar-text"><i class="fas fa-user-circle"></i> Welcome, <%= displayName %></li>
+                        <li class="nav-item"><a href="/logout" class="nav-link text-white">
+                          <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+                      <% } else { %>
+                        <li class="nav-item"><a href="/login" class="nav-link text-white">
+                          <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+                      <% } %>
+            </div>
+        </div>
+        <div class="col py-3">
+                    <div class="jumbotron" style="background-color:#1F2833; color: #ffffff;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="offset-md-3 col-md-6">
+                                    <h1><%= title %></h1>
+                        
+                                    <form class="form" method="POST">
+                                        <div class="form-group">
+                                            <label for="nameTextField">Contact Name</label>
+                                            <input type="text" class="form-control"
+                                            id="nameTextField"
+                                            placeholder="Enter the Contact Name"
+                                            name="name" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="contactTextField">Contact Number</label>
+                                            <input type="text" class="form-control"
+                                            id="contactTextField"
+                                            placeholder="Enter the Contact Number"
+                                            name="contact" required>
+                                        </div>
+                        
+                                        <div class="form-group">
+                                            <label for="emailTextField">Email</label>
+                                            <input type="text" class="form-control"
+                                            id="emailTextField"
+                                            placeholder="Enter the Email Address"
+                                            name="email" required>
+                                        </div>
+                        
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-edit"></i> Submit</button>
+                                        
+                                            <a href="/book-list" class="btn btn-warning">
+                                                <i class="fas fa-undo"></i> Cancel</a>
+                        
+                                    </form>
+                                </div>
+                        
+                            </div>
+                        </div>
+        </div>
+        </div>
+    </div>
+  </div>
